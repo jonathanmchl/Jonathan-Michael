@@ -62,3 +62,66 @@ int main(){
 				cout<<endl;
 				break;
 			case 4:
+				cout<<"hapus node akhir"<<endl;
+				s1.hapusakhir();
+				break;
+			case 5:
+				cout<<"masukan node di posisi tertentu"<<endl;
+				s1.insert_pos();
+				cout<<endl;
+				break;
+			case 6:
+				cout<<"menghapus node tertentu"<<endl;
+				s1.delete_pos();
+				cout<<endl;
+				break;
+			case 7:
+				cout<<"display list"<<endl;
+				s1.display();
+				cout<<endl;
+				break;
+			case 8:
+				cout<<"byee"<<endl;
+				return 0;
+			default:
+				cout<<"tidak ada pilihan";
+		}
+	}
+}
+node *single_list::create_node(int value){
+	struct node *temp, *s;
+	temp = new(struct node);
+	if (temp==NULL){
+		cout<<"Memory not allocated"<<endl;
+		return 0;
+	} else {
+		temp->info = value;
+		temp->next = NULL;
+		return temp;
+	}
+	}
+void single_list::tambahawal(){
+	int value;
+	cout<<"Masukan value: ";cin>>value;
+	struct node *temp, *p;
+	temp= create_node(value);
+	if (head==NULL){
+		head = temp;
+		head->next = NULL;
+	} else {
+		p = head;
+		head = temp;
+		head->next = p;
+	}
+	cout<<"Elemnt dimasukan pada awal"<<endl;
+}
+	
+void single_list::tambahakhir(){
+ int databaru;
+ cout<<" Masukkan value: ";cin>>databaru;
+ struct node *baru,*bantu;
+ baru = new node;
+ baru->info = databaru;
+ baru->next = NULL;
+ if(kosong()==1){
+				
