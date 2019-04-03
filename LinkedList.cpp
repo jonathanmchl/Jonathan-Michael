@@ -124,4 +124,67 @@ void single_list::tambahakhir(){
  baru->info = databaru;
  baru->next = NULL;
  if(kosong()==1){
-				
+head=baru;
+ tail=baru;
+ tail->next = NULL;
+ }
+ else {
+  tail->next = baru;
+  tail=baru;
+ }
+ cout<<"Data masuk\n";
+}
+
+void single_list::insert_pos(){
+	int value, pos, counter = 0;
+	cout<<"masukan value: ";cin>>value;
+	struct node *temp, *s, *ptr;
+	temp = create_node(value);
+	cout<<"masukan posisi yang ingin dituju";cin>>pos;
+	int i;
+	s = head;
+	while (s!=NULL){
+		s = s->next;
+		counter ++;
+	}
+	if (pos==1){
+		if (head == NULL){
+		head = temp;
+		head->next= NULL;
+		} else {
+			ptr = head;
+			head = temp;
+			head->next=ptr;
+		}
+		}
+	else if (pos>1 && pos <= counter){
+			s = head;
+			for (i=1; i<pos;i++){
+				ptr =s;
+				s=s->next;
+			}
+			ptr->next = temp;
+			temp->next = s;
+		} else {
+			cout<<"posisi terlalu jauh"<<endl;
+			
+		}
+	
+}
+
+
+void single_list::delete_pos(){
+	int pos, i, counter = 0;
+	if (head == NULL){
+		cout<<"list kosong"<<endl;
+		return;
+	}
+	cout<<"masukan posisi yang ingin dihapus";cin>>pos;
+	struct node *s, *ptr;
+	s = head;
+	if (pos==1){
+		head = s->next;
+	} else {
+		while (s!=NULL){
+			s=s->next;
+			counter++;
