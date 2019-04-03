@@ -188,3 +188,72 @@ void single_list::delete_pos(){
 		while (s!=NULL){
 			s=s->next;
 			counter++;
+	}
+		if (pos>0 &&pos <=counter){
+			s = head;
+			for (i=1; i<pos;i++){
+				ptr = s;
+				s=s->next;
+			}
+			ptr->next = s->next;
+		} else {
+			cout<<"posisi diluar jangkauan"<<endl;
+		}
+		free(s);
+		cout<<"elemen telah dihapus"<<endl;
+	}
+}
+
+void single_list::display(){
+	struct node *temp;
+	if (head==NULL) {
+		cout<<"List is empty"<<endl;
+		return;
+	}
+	temp = head;
+	cout<<"elemen dari list nya adalah : "<<endl;
+	while (temp != NULL){
+		cout<<temp->info<<"->";
+		temp = temp->next;
+	}
+	cout<<"NULL"<<endl;
+}
+
+void single_list::hapusawal(){
+	struct node *hapus;
+     int d;
+     if (kosong()==0){
+          if(head!=tail){
+           hapus = head;
+           d = hapus->info;
+           head = head->next;
+           delete hapus;
+          } else {
+           d = tail->info;
+           head=tail=NULL;
+          }
+   cout<<d<<" Terhapus"<<endl;
+     } else cout<<"Masih kosong\n";
+}	
+	
+void single_list::hapusakhir(){
+     struct node *bantu,*hapus;
+     int d;
+     if (kosong()==0){
+      bantu = head;
+          if(head!=tail){
+               while(bantu->next!=tail){
+                bantu = bantu->next;
+               }
+               hapus = tail;
+               tail=bantu;
+               d = hapus->info;
+               delete hapus;
+               tail->next = NULL;
+            }else {
+            d = tail->info;
+             head=tail=NULL;
+            }
+      cout<<d<<" Terhapus\n"<<endl;
+     } else cout<<"Masih kosong\n";
+}	
